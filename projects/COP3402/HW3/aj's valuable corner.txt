@@ -1,0 +1,57 @@
+"What do you call a cow that suffers from seizures? beef jerky" ~ JFK
+
+Flow of data:
+IN -> Scanner -> Parser -> Intermediate Code Generator -> Virtual Machine -> OUT
+
+The Basic Theory behind Everything:
+Read in your input file and store it as char array. ✓
+Pass that as an argument to your lexical analyzer which should return a struct array of the lexemes. 
+Pass that to the parser/codegen which should then return a struct array of code.
+Finally, pass the struct array of the code to the virtual machine which should execute. ✓
+
+
+General thoughts for each program:
+{
+	Scanner a.k.a lex.c:
+		- processes entire input file and outputs tokens (lexemes) for the Parser
+
+	Parser/Codegen a.k.a parser.c:
+		- reads in tokens from the Scanner, checks for any syntax errors, adds them to a Symbol Table
+			- if errors, report why and terminate programs (HW3 word.doc - Appendix C)
+		- after adding tokens to Symbol Table, generate intermediary code for the VM to process
+		- For constants, you must store kind, name and value.
+		- For variables, you must store kind, name, L and M.
+
+
+	Virtual Machine a.k.a vm.c:
+		- takes input from the ICG and outputs code processes
+
+	Notes about flags (-l, -a, -v):
+		-l : print the list and table of lexemes/tokens (lex.c) to the screen
+		-a : print the generated assembly code (parser.c) to the screen
+		-v : print virtual machine execution trace (vm.c) to the screen
+}
+
+To do:
+- Symbol table
+- Intermediate Code Generator
+
+Where to find information, pseudo-code, about certain topic?
+{
+	Symbol Table
+		HW3 word.doc - Appendix D
+		Lecture05a - Symbol table
+			=> includes setup and insertion into table
+		Recitation5 - Symbol Tables
+		
+
+	Codegen
+		HW3 word.doc - Appendix B, Appendix D
+		Lecture8 - Intermedidate Code Generation
+			=> includes code, grammar, and translations
+		Recitation5a - Parser Code Generation
+}
+
+Done:
+- vm.c ✓
+- lex.c ✓

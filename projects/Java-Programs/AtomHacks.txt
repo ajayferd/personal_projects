@@ -1,0 +1,22 @@
+Atom Hacks!
+
+Ctrl + ,
+-> opens settings
+
+Ctrl + /
+-> selected line of code becomes a comment
+
+Ctrl + L
+-> selects entire line
+
+Ctrl + M
+-> matches line of code to encapsulating brackets
+
+Ctrl + Page Up/Down
+-> cycle through opened tabs
+
+Ctrl + D
+-> highlight word and edit mulitple copies of it present in plainstext
+
+Ctrl + \
+-> toggle file view
