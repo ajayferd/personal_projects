@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset = "UTF-8">
+		<title> Kyotos Restaurant </title>
+		<style>
+		h1 {
+			background-color: lightgreen;
+			color: rgb(40, 40, 40);
+		}
+		p {
+			font-family: arial;
+			margin-left: 10px;
+		}
+		img {
+			margin-left: 10px;
+		}
+		strong {
+			color: rgb(40,100,100);
+		}
+		em {
+			color: darkblue;
+		}
+		span {
+			color: blue;
+		}
+		</style>
+		</head>
+		<body>
+			<h1> Kyotos Restaurant Review</h1>
+			<p><strong>Rating:</strong>
+			<span id = "rating1">*</span>
+			<span id = "rating2">*</span>
+			<span id = "rating3">*</span>
+			<span id = "rating4">*</span>
+			<span id = "rating5">*</span>
+			</p>
+			<p><strong>Update Rating:</strong>
+				<button id = "rate3btn">Rate 3</button>
+				<button id = "rate4btn">Rate 4</button>
+				<button id = "rate5btn">Rate 5</button>
+			</p>
+			<p><strong>Favorite Dish:</strong>Clear Soup</p>
+			<img src = "https://resources.zybooks.com/WebProgramming/kyotov1.jpg">
+			
+			<script>
+				let rate5button = document.getElementById("rate5btn");
+				rate5button.addEventListener("click", function() {
+					updateRating(5);
+				});
+				let rate4button = document.getElementById("rate4btn");
+				rate4button.addEventListener("click", function() {
+					updateRating(4);
+				});
+				let rate3button = document.getElementById("rate3btn");
+				rate3button.addEventListener("click", function() {
+					updateRating(3);
+				});
+				
+				function updateRating(newRating)
+				{
+					let star1 = document.getElementById("rating1");
+					let star2 = document.getElementById("rating2");
+					let star3 = document.getElementById("rating3");
+					let star4 = document.getElementById("rating4");
+					let star5 = document.getElementById("rating5");
+					
+					star1.style.color = "blue";
+					star2.style.color = "blue";
+					star3.style.color = "blue";
+					star4.style.color = "blue";
+					star5.style.color = "blue";
+					
+					if (newRating == 4) {
+					star5.style.color = "lightgray";
+					star4.style.color = "lightgray";
+					}
+				}
+			</script>
