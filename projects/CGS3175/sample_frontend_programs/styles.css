@@ -1,0 +1,57 @@
+:root {
+    --header-color: white;
+    --font-color: white;
+    --background-color: #070040;
+}
+/* :root means this template will be applied to the entire html file*/
+
+ul, ol, table, p, nav {
+    color: white;
+}
+
+body {
+    color: var(--font-color);
+    background-color: var(--background-color);
+    /* text-align: center; */
+}
+
+/* img { 
+    display: block;
+    margin: auto;
+} */
+
+#top-image {
+    display: block;
+    margin: auto;
+}
+
+#right-image {
+    margin-right: auto;
+    float: right;
+}
+
+h1 {
+    color: var(--header-color);
+}
+
+h2 {
+    color: var(--header-color);
+}
+
+a:link {
+    color: var(--font-color);
+}
+
+a:visited {
+    color: var(--font-color);
+}
+
+a:hover {
+    color: yellow;
+}
+
+a:active {
+    color: yellow;
+}
+
+
