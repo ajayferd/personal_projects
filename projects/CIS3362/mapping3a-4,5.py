@@ -46,7 +46,7 @@ def find_all_unique_keys_really_fast(n):
 def main():
     alpha_size = int(input("Please enter the alphabet size: "))
     # find_all_keys(alpha_size)
-    list_of_permutations = list(permutations(range(0, alpha_size)))
+    # list_of_permutations = list(permutations(range(0, alpha_size)))
     # print("Size of unique permutations: {}".format(find_all_unique_keys(alpha_size, list_of_permutations)))
     print("Size of unique permutations really fast: {}".format(find_all_unique_keys_really_fast(alpha_size)))
 
