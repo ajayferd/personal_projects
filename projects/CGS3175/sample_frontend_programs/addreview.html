@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Restaurant Reviews - Add Review</title>
+      <link rel="stylesheet" href="stylesA.css">
+   </head>
+   <body>
+      <header>
+         <h1>Restaurant Reviews</h1>
+         <nav>
+            <ul>
+               <li><a href="homeindex.html">Home</a></li>
+               <li><a href="addreview.html">Add Review</a></li>
+               <li><a href="about.html">About</a></li>
+            </ul>
+         </nav>
+      </header>
+      <main>
+         <h2>Add Review</h2>
+         <form method="post" action="https://wp.zybooks.com/form-viewer.php">
+            <p>
+               <label for="name">Name?</label>
+               <input type="text" id="name" name="name" required>
+            </p>
+            <p>
+               <label for="restaurant">Restaurant?</label>
+               <select id="restaurant" name="restaurant" required>
+                  <option value="">Choose one...</option>
+                  <option>Charlie's Pizza</option>
+                  <option>El Paraiso</option>
+                  <option>Greek House</option>
+                  <option>Main Street Cafe</option>
+                  <option>Whilma's Filipino Restaurant</option>
+               </select>
+            </p>
+            <p>
+               <label for="visit-date">Date of visit?</label>
+               <input type="date" name="visit-date" id="visit-date" required>
+            </p>
+            <p>
+               <label for="rating">Rating?</label>
+               <input type="number" id="rating" name="rating" min="1" max="5" step="0.5" value="5" required>
+            </p>
+            <p>
+               <label for="details">Details?</label>
+               <textarea id="details" name="details" rows="5" cols="40" required></textarea>
+            </p>
+            <button>Submit</button>
+         </form>
+      </main>
+      <footer>
+         <p>
+            &copy; 2022 Restaurant Reviews 
+         </p>
+      </footer>
+   </body>
+</html>
