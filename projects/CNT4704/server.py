@@ -3,49 +3,48 @@
 # TCP protocol to send packets.
 # This code is based on the lectures of CNT4704, UCF 2022, Abdulmajeed Alghamdi. 
 # Ack. Dr. Kurose & Ross (Authors of textbook)
-# eustis.eecs.ucf.edu
+# eustis3.eecs.ucf.edu
 from socket import *
 
 # Create a TCP server socket
 # (AF_INET is used for IPv4 protocols)
 # (SOCK_STREAM is used for TCP)
 
-def main():
-    serverSocket = socket(AF_INET,SOCK_STREAM)
-    # Assign a port number
-    serverPort = 12001
-    serverAddress = '10.173.204.63'
-    serverAddress = 'localhost'
-    # Bind the socket to server address and server port
-    serverSocket.bind((serverAddress, serverPort))
-    # Listen to at most 1 connection at a time
-    serverSocket.listen(1)
-    # Server should be up and running and listening to the incoming connections
-    print('Connected with server on {}'.format(serverAddress))
-    while True:
-        # Set up a new connection from the client
-        connectionSocket, addr = serverSocket.accept()
-        
-        # Receives the request sentence from the client
-        sentence = connectionSocket.recv(1024).decode()
-        
-        # Capitalizes the received sentence
-        capitalizedSentence = sentence.upper()
-        
-        # Send the capitalized sentence to the connection socket
-        connectionSocket.send(capitalizedSentence.encode())
-        
-        # Close the client connection socket
+serverSocket = socket(AF_INET,SOCK_STREAM)
+
+# Assign a port number
+serverPort = 12002
+serverAddress = 'eustis3.eecs.ucf.edu'
+# serverAddress = 'localhost'
+# Bind the socket to server address and server port
+serverSocket.bind((serverAddress, serverPort))
+# Listen to at most 1 connection at a time
+serverSocket.listen(1)
+
+# Server should be up and running and listening to the incoming connections
+print('Connected with server on {}'.format(serverAddress))
+while True:
+    # Set up a new connection from the client
+    connectionSocket, addr = serverSocket.accept()
+    
+    # Receives the request sentence from the client
+    equation = connectionSocket.recv(1024).decode()
+    splicedEquation = equation.replace(' ', '').rstrip(equation[-1])
+    
+    if splicedEquation == '0/0':
+        print('Recieved question "{}"; end the server program'.format(equation))
+        connectionSocket.send('X'.encode())
         connectionSocket.close()
-        
-def calculate(x, op, y):
-    if op == '+':
-        return x + y
-    elif op == '-':
-        return x - y
-    elif op == '*':
-        return x * y
-    elif op == '/':
-        return x/y
-    else:
-        return "Input Error. Re-type the math questiona again"
+        break
+    
+    # evaluates the math equation
+    try:
+        answer = eval(splicedEquation)
+        print('Recieved question "{}"; send back answer {}'.format(equation, answer))
+        connectionSocket.send(str(answer).encode())
+    except Exception:
+        connectionSocket.send('Input error, Re-type the math question again.'.encode())
+    
+    
+    # Close the client connection socket
+connectionSocket.close()
