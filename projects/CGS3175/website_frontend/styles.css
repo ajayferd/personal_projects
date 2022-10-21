@@ -1,0 +1,55 @@
+:root {
+    --header-color: #00337E;
+    --font-color: white;
+    --bg-color: #070040;
+    --secondary-color: #b60b00;
+}
+
+body {
+    color: var(--font-color);
+    background-color: var(--header-color);
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: black;
+}
+
+a:visited {
+    color: var(--secondary-color);
+}
+
+a:link {
+    color: var(--font-color);
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+div {
+    display: block;
+}
+
+head, h1 {
+    text-align: center;
+    margin-top: 14px;
+    font-size: xx-large;
+    font-weight: bold;
+}
+nav {
+    text-align: center;
+    margin-top: 14px;
+}
+
+nav a {
+    text-decoration : none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: larger;
+}
+
+td {
+    padding: 10px
+}
+
+h5 {
+    text-align: right;
+}
