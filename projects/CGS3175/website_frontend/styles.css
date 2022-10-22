@@ -1,13 +1,49 @@
 :root {
     --header-color: #00337E;
-    --font-color: white;
-    --bg-color: #070040;
+    --font-color: black;
+    --bg-color: #eeeeee;
     --secondary-color: #b60b00;
+    --secondary-font-color: white;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: auto;
+    width: 50%;
+}
+
+.img_center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 50%;
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style-type: none;
+}
+
+table {
+    border-collapse: collapse;
+	border: 2px solid 24px;
+    border-color: var(--secondary-color);
+    text-align: center;
+    vertical-align: middle;
+}
+
+th {
+    color: var(--secondary-font-color);
+    background-color: var(--header-color);
+    text-transform: uppercase;
 }
 
 body {
     color: var(--font-color);
-    background-color: var(--header-color);
+    background-color: var(--bg-color);
     font-family: Arial, Helvetica, sans-serif;
     text-shadow: black;
 }
@@ -24,10 +60,6 @@ a:hover {
     color: var(--secondary-color);
 }
 
-div {
-    display: block;
-}
-
 head, h1 {
     text-align: center;
     margin-top: 14px;
@@ -39,17 +71,73 @@ nav {
     margin-top: 14px;
 }
 
+li a {
+    color: var(--font-color);
+}
 nav a {
     text-decoration : none;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: larger;
+    font-size: x-large;
 }
 
+h2 {
+    text-indent: 15px;
+    background-color: var(--header-color);
+    color: var(--secondary-font-color);
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: black;
+}
 td {
-    padding: 10px
+    padding: 12px;
+    font-weight: bold;
 }
 
 h5 {
     text-align: right;
+}
+
+li {
+    padding: 12px;
+    font-style: normal;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+sub {
+    font-weight: bold;
+    text-indent: 30px;
+    padding-left: 30px;
+    width: 100px;
+
+}
+
+ul, ol {
+    text-indent: 15px;
+    padding: 6px;
+    font-style: italic;
+    font-size: larger;
+}
+
+ol {
+    margin: 0 0 1.5em;
+    padding: 0;
+    counter-reset: item;
+}
+   
+ol > li {
+    margin: 0;
+    padding: 0 0 0 2em;
+    text-indent: -2em;
+    list-style-type: none;
+    counter-increment: item;
+}
+   
+ol > li:before {
+    display: inline-block;
+    width: 1.5em;
+    padding-right: 0.5em;
+    font-weight: bold;
+    text-align: right;
+    content:counter(item) ".";
 }
