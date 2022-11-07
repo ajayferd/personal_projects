@@ -1,4 +1,4 @@
-const uri = "mongodb+srv://admin:JxXkJqxYxLMcfhhF@fernandeztestings.jisorjh.mongodb.net/test";
+const uri = "";
 const client = new MongoClient(uri);
 
     try {
