@@ -2,9 +2,16 @@
 <html lang = "en"></html>
     <html>
     <body>
-
+        <script src="js/three.min.js"></script>
+        <script src="js/panolens.min.js"></script>
         <p> hello world </p>
-        
+        <script>
+
+            const panorama = new PANOLENS.ImagePanorama('tu09tpc-a-large-bed-in-a-room.jpeg' );
+            const viewer = new PANOLENS.Viewer();
+            viewer.add( panorama );
+            
+            </script>
     </body>
     </html>
 
