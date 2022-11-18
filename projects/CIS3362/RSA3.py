@@ -7,33 +7,73 @@
 import random
 
 def main():
-    # Get p, q, e.
-    p = 36279836279899
-    q = 76214213232259
-    e = 7455573413522025488689  
-    blocksize = 16
+    print(modInv(7455573413522025488689, 27299026172155563704424))
+    # Get p, q.
+    p = int(input("Enter the approximate value of p you want.\n"))
+    p = getnextprime(p)
+    q = int(input("Enter the approximate value of q you want.\n"))
+    q = getnextprime(q)
+
     # Calculate n, phi(n).
     n = p*q
     phi = (p-1)*(q-1)
 
-    d = modInv(e, phi)
-    numBlocks = int(13)
+    done = False
+
+    # Loop till we get a valid e.
+    while not done:
+
+        e = random.randint(3,phi-3)
+
+        if gcd(e, phi) == 1:
+            done = True
+        else:
+            print("Sorry that is not relatively prime to phi of n.")
+
+    # d is always the modular inverse of e mod phi.
+    d = modInv(e,phi)
 
     print("n =",n)
     print("e =",e)
     print("d =",d)
 
-    for loop in range(numBlocks):
+    # Get the blocksize
+    blocksize = getBlockSize(n)
+
+    # Get message.
+    strmsg = input("Enter your message, lowercase letters\n")
+    while len(strmsg)%blocksize != 0:
+        strmsg = strmsg + "x"
+
+    for i in range(0, len(strmsg), blocksize):
 
         # Convert to a number.
-        cipher = int(input(""))
+        tmp = strmsg[i:i+blocksize]
+        msg = convert(tmp, blocksize)
+        
+        # This is the cipher text.
+        cipher = fastmodexpo(msg, e, n)
+        print(cipher)
         
         # Decrypt to get plaintext number.
         mback = fastmodexpo(cipher, d, n)
 
         # Now, print as string.
         origmsg = convertBack(mback, blocksize)
-        print(origmsg)
+
+# Returns the max block size for integer n.
+def getBlockSize(n):
+
+    res = 0
+    mult = 1
+
+    # If we can multiply 26 into our current size, we can add 1 to our blocksize.
+    while 26*mult <= n:
+        res += 1
+        mult *= 26
+
+    # Here is our result.
+    return res
 
 def convert(mystr, blocksize):
 
@@ -59,13 +99,26 @@ def convertBack(msg, blocksize):
 
     # Concatenate letters from back to front.
     for i in range(blocksize):
-        let = chr(msg%26 + ord('a'))
+        let = chr(msg%26 + ord('A'))
         res = let + res
         msg = msg//26
 
     # Ta da!
     return res
     
+# Returns the next prime greater than or equal to n.
+def getnextprime(n):
+
+    # Make n odd.
+    if n%2 == 0:
+        n += 1
+
+    # Now, keep on trying until we find one.
+    while not isprobablyprime(n, 100):
+        n += 2
+
+    # Ta da!
+    return n
 
 # Returns (base**exp) % mod, efficiently.
 def fastmodexpo(base,exp,mod):
@@ -87,6 +140,54 @@ def gcd(a,b):
     if b == 0:
         return a
     return gcd(b, a%b)
+
+def millerrabin(n):
+
+    # Choose random base for Miller Rabin.
+    a = random.randint(2,n-2)
+
+    # Set up our base exponent.
+    baseexp = n-1
+    k = 0
+
+    # Divide out 2 as many times as possible from n-1.
+    while baseexp%2 == 0:
+        baseexp = baseexp//2
+        k += 1
+
+    # Calculate first exponentiation.
+    curValue = fastmodexpo(a, baseexp, n)
+
+    # Here we say it's probably prime.
+    if curValue == 1:
+        return True
+
+    for i in range(k):
+
+        # Must happen for all primes, and more rarely for composites.
+        if curValue == n-1:
+            return True
+
+        # We just square it to get to the next number in the sequence.
+        else:
+            curValue = (curValue*curValue)%n
+
+    # If we get here, it must be composite.
+    return False
+
+def isprobablyprime(n, numTimes):
+
+    # Run Miller Rabin numTimes times.
+    for i in range(numTimes):
+
+        # If it ever fails, immediately return that the number is definitely
+        # composite.
+        tmp = millerrabin(n)
+        if not tmp:
+            return False
+
+    # If we get here, it's probably prime.
+    return True
 
 # Returns a list storing [x, y, gcd(a,b)] where ax + by = gcd(a,b).
 def EEA(a,b):

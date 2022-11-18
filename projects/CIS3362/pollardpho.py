@@ -40,8 +40,8 @@ def gcd(a,b):
 
 
 def main():
-    a = 36279836279898 
-    b = 76214213232258
+    a = 221122112212 
+    b = 123456790002
     print(a*b)
     n = int(input("Enter a number to factorize\n"))
     factor = getFactor(n)
