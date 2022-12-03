@@ -31,7 +31,25 @@ head, h1, h3, h4, h5 {
     width: 50%;
 }
 
+.header {
+    padding: 10px 16px;
+    background: var(--bg-color);
+    color: var(--font-color);
+}
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.content {
+    padding: 12px;
+}
+
+.sticky + .content {
+    padding-top: 96px;
+}
 a:visited {
     color: var(--secondary-color);
 }
@@ -62,7 +80,16 @@ nav a {
 img {
     width: 600px;
     height: 350px;
+}
 
+
+.zoom {
+    padding: 50px;
+    transition: transform .2s; 
+}
+  
+  .zoom:hover {
+    transform: scale(1.25);
 }
 
 caption li{
