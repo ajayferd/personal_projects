@@ -23,6 +23,11 @@ public class AdjacencyList
     // adjacencyLists.get(destination).add(source);
   }
 
+  public int getNumber()
+  {
+    return this.vertex;
+  }
+
   public void printGraph()
   {
     for (int i = 0; i < adjacencyLists.size(); i++)
@@ -46,6 +51,7 @@ public class AdjacencyList
     graph.addEdge(4, 2);
     graph.addEdge(5, 1);
     graph.addEdge(5, 2);
+    System.out.println(graph.getNumber());
     graph.printGraph();
   }
 }
