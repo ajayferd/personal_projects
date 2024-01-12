@@ -1,3 +1,4 @@
+import this
 print("Welcome to the Binary-Decimal Converter!\n(1) Convert Decimal to Binary\n(2) Convert Binary to Decimal")
 selection = 'y'
 while selection == 'y':
