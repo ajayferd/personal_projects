@@ -4,3 +4,6 @@ JS-Programs/*
 Java-Programs/DinnerGenerator/dinner.history
 .vscode/
 API-Practice/*
+themeparkguide/data/*
+themeparkguide/venv/*
+themeparkguide/__pycache__/*

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Theme Park Optimizer</title>
+    <link rel="stylesheet" href="/static/styles.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎢 The Worst Day Ever...</h1>
+
+    <!-- LIVE CLOCK -->
+    <div class="live-bar">
+        <div id="clock">--:--:--</div>
+        <div id="date">Loading date...</div>
+    </div>
+
+    <!-- TEXT TEMPLATE SECTION -->
+    <div class="card center">
+        <h2>Theme Park Optimizer Overview</h2>
+        <p class="text-block">
+            Welcome to the Theme Park Optimizer dashboard. This application uses current, realtime wait times from Univesal Islands of Adventure to determine the most optimal day at the theme park.
+            Use the controls below to analyze wait times and optimize the amount of rides possible in real time using historical and predictive data.
+        </p>
+    </div>
+
+    <!-- RIDE SELECTOR -->
+    <div class="card center">
+    <h2>Select Ride</h2>
+
+    <select id="rideSelect" onchange="loadSelectedRide()">
+        <option>Loading rides...</option>
+    </select>
+    <div class="card center">
+        <h2>Current Wait Time</h2>
+        <div id="rideOutput">Select a ride to view analytics</div>
+    </div>
+    
+
+    
+    <!-- CONTROLS -->
+    <div class="card center">
+        <div class="card center">
+            <h2>🎡 Ride Capacity Analysis</h2>
+            <div class="grid-2">
+            <div class="mini-card">
+                <h3>⚡ Fastest Rides</h3>
+                <div id="fastRides"></div>
+            </div>
+
+            <div class="mini-card">
+                <h3>🐢 Slowest Rides</h3>
+            <div id="slowRides"></div>
+        </div>
+
+        </div>
+        </div>
+    </div>
+    <div class="card center">
+        <h2>Run Analysis</h2>
+
+            <div class="button-group">
+                <button onclick="loadPath('optimal')">Least Wait Times Path</button>
+                <button onclick="loadPath('weighted_optimal')">Optimal Wait Times Path</button>
+                <button onclick="loadPath('worst')"> Highest Wait Times Path</button>
+            </div>
+        <!-- OUTPUT -->
+        <div class="card center">
+            <h2>Your Generated Path</h2>
+            <div id="pathContainer">
+                Select a path to begin
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/app.js"></script>
+<div class="footer">
+    Real time data gathered by https://queue-times.com/, historical data stored and processed by myself.
+</div>
+</body>
+</html>
